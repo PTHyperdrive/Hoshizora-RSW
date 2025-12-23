@@ -1,4 +1,4 @@
-# 🌸 Hoshizora-RSW (Resilient Secure Workspace)
+# 🌸 Hoshizora-RSW
 
 > **Version:** `v2.0.0`  
 > **Status:** Stable — Key-Saver Server, Hoshizora Client, DLL exports  
