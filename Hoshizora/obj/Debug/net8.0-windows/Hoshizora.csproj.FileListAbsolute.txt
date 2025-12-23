@@ -1,0 +1,16 @@
+E:\Codes\Decentralize-DataNodes\Hoshizora\obj\Debug\net8.0-windows\Hoshizora.GeneratedMSBuildEditorConfig.editorconfig
+E:\Codes\Decentralize-DataNodes\Hoshizora\obj\Debug\net8.0-windows\Hoshizora.AssemblyInfoInputs.cache
+E:\Codes\Decentralize-DataNodes\Hoshizora\obj\Debug\net8.0-windows\Hoshizora.AssemblyInfo.cs
+E:\Codes\Decentralize-DataNodes\Hoshizora\obj\Debug\net8.0-windows\Hoshizora.csproj.CoreCompileInputs.cache
+E:\Codes\Decentralize-DataNodes\Hoshizora\obj\Debug\net8.0-windows\Hoshizora.sourcelink.json
+E:\Codes\Decentralize-DataNodes\Hoshizora\bin\Debug\net8.0-windows\Hoshizora.exe
+E:\Codes\Decentralize-DataNodes\Hoshizora\bin\Debug\net8.0-windows\Hoshizora.deps.json
+E:\Codes\Decentralize-DataNodes\Hoshizora\bin\Debug\net8.0-windows\Hoshizora.runtimeconfig.json
+E:\Codes\Decentralize-DataNodes\Hoshizora\bin\Debug\net8.0-windows\Hoshizora.dll
+E:\Codes\Decentralize-DataNodes\Hoshizora\bin\Debug\net8.0-windows\Hoshizora.pdb
+E:\Codes\Decentralize-DataNodes\Hoshizora\obj\Debug\net8.0-windows\Hoshizora.dll
+E:\Codes\Decentralize-DataNodes\Hoshizora\obj\Debug\net8.0-windows\refint\Hoshizora.dll
+E:\Codes\Decentralize-DataNodes\Hoshizora\obj\Debug\net8.0-windows\Hoshizora.pdb
+E:\Codes\Decentralize-DataNodes\Hoshizora\obj\Debug\net8.0-windows\Hoshizora.genruntimeconfig.cache
+E:\Codes\Decentralize-DataNodes\Hoshizora\obj\Debug\net8.0-windows\ref\Hoshizora.dll
+E:\Codes\Decentralize-DataNodes\Hoshizora\bin\Debug\net8.0-windows\p2pnode.dll

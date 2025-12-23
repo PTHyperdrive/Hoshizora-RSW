@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AssemblyName>Hoshizora</AssemblyName>
+    <RootNamespace>Hoshizora</RootNamespace>
+    <Version>1.0.0</Version>
+    <Description>Hoshizora-RSW - Resilient Secure Workspace</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Text.Json" Version="8.0.0" />
+  </ItemGroup>
+
+  <!-- Copy p2pnode.dll to output directory if it exists -->
+  <ItemGroup>
+    <None Include="..\go-node\p2pnode.dll" Condition="Exists('..\go-node\p2pnode.dll')">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,40 @@
+[Unit]
+Description=Hoshizora Key-Saver Server
+Documentation=https://github.com/PTHyperdrive/Decentralize-DataNodes
+After=network.target
+
+[Service]
+Type=simple
+User=keysaver
+Group=keysaver
+WorkingDirectory=/opt/keysaver
+
+# Main executable
+ExecStart=/opt/keysaver/keysaver-server \
+    --master-key "${MASTER_KEY}" \
+    --db /opt/keysaver/data/keys.db \
+    --addr :443 \
+    --cert /opt/keysaver/certs/server.crt \
+    --key /opt/keysaver/certs/server.key
+
+# Environment file for secrets
+EnvironmentFile=-/opt/keysaver/.env
+
+# Restart policy
+Restart=always
+RestartSec=5
+
+# Security hardening
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/keysaver/data
+PrivateTmp=true
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=keysaver
+
+[Install]
+WantedBy=multi-user.target
