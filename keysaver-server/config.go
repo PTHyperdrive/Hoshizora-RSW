@@ -58,11 +58,11 @@ type ListKeysResponse struct {
 
 func defaultConfig() *Config {
 	return &Config{
-		Port:       8443,
+		Port:       80,
 		DBPath:     "keys.db",
 		MasterKey:  "",
 		CertFile:   "server.crt",
 		KeyFile:    "server.key",
-		AuthTokens: []string{},
+		AuthTokens: []string{"hoshizora-api-token-changeme"}, // Default token - CHANGE IN PRODUCTION
 	}
 }

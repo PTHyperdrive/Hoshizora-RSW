@@ -364,6 +364,11 @@ func (s *Server) ControlHandler() http.Handler {
 		writeJSON(w, blocks)
 	})
 
+	// Command sync endpoints (localhost only)
+	mux.HandleFunc("/command/broadcast", s.handleBroadcastCommand)
+	mux.HandleFunc("/command/pending", s.handleGetPendingCommand)
+	mux.HandleFunc("/env/export", s.handleExportEnv)
+
 	// Send actions on localhost
 	mux.HandleFunc("/mix/send-text", s.handleSendText)
 	mux.HandleFunc("/mix/send-file", s.handleSendFileDistribute)

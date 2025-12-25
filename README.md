@@ -179,6 +179,45 @@ curl "http://127.0.0.1:8081/chunks/decrypt?hash=<sha256>&name=report.txt&out=res
 
 ---
 
+## 🔄 P2P Sync Feature (NEW)
+
+Synchronized encryption/decryption across all connected nodes.
+
+### How It Works
+1. **Node A** encrypts a folder → Command broadcast to all peers
+2. **Node B, C, D...** receive command → Automatically encrypt their configured sync folders
+3. Same process for decryption
+
+### Configuration (`Config.cs`)
+```csharp
+public static bool P2PSyncEnabled = true;       // Enable P2P command sync
+public static string SyncFolderPath = @"C:\SecureData";  // Each machine sets own path
+```
+
+### Export Env for Distribution
+First node generates `env.enc`. Export it for other machines:
+1. Start node on first machine
+2. Use the control API to export: `GET http://127.0.0.1:8081/env/export`
+3. Copy `env.enc` + application to other machines
+4. Other machines will join the same network without creating new keys
+
+### Control API Endpoints (localhost:8081)
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/command/broadcast` | POST | Broadcast encrypt/decrypt command to all peers |
+| `/command/pending` | GET | Get pending command for polling |
+| `/env/export` | GET | Download env.enc for distribution |
+| `/p2p/command` | POST | Receive command from peer (public API) |
+
+### Example: Broadcast Encrypt Command
+```bash
+curl -X POST http://127.0.0.1:8081/command/broadcast \
+  -H "Content-Type: application/json" \
+  -d '{"type":"encrypt","folder_path":"C:\\SecureData","recursive":true}'
+```
+
+---
+
 ## 🧭 Roadmap
 - ✅ Node Discovery, Encrypted Replication
 - ✅ Key-Saver Server with TLS

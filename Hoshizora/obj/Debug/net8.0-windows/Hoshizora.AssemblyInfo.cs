@@ -12,9 +12,9 @@ using System.Reflection;
 
 [assembly: System.Reflection.AssemblyCompanyAttribute("Hoshizora")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
-[assembly: System.Reflection.AssemblyDescriptionAttribute("Hoshizora - Decentralized Data Node (Hardcoded Environment)")]
+[assembly: System.Reflection.AssemblyDescriptionAttribute("Hoshizora-RSW - Resilient Secure Workspace")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2f38b6b2d26423e18e1a5b53d8ce0fb8f7fccf76")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1bf7c793d4d094b54430d72e11729c6f18074b77")]
 [assembly: System.Reflection.AssemblyProductAttribute("Hoshizora")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Hoshizora")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

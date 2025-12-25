@@ -165,6 +165,9 @@ func (s *Server) PublicHandler() http.Handler {
 		})
 	})
 
+	// P2P Command sync (receive command from peer)
+	mux.HandleFunc("/p2p/command", s.handleP2PCommand)
+
 	// Minimal DHT endpoints for peers
 	mux.HandleFunc("/dht/put", func(w http.ResponseWriter, r *http.Request) {
 		if r.Method != http.MethodPost {

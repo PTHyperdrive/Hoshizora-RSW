@@ -8,19 +8,21 @@ import (
 
 // Server hosts HTTP APIs, local KV, and node keypair for MixNet.
 type Server struct {
-	cfg      *Config
-	id       NodeIdentity
-	peers    *PeerStore
-	dht      DHT
-	nodeKeys *NodeKeypair
-	paths    *EnvPaths
-	secrets  *EnvSecrets
-	mu       sync.RWMutex
-	kv       map[string][]byte
-	chainMu  sync.Mutex
-	chainTip string
-	seenMu   sync.Mutex
-	seen     map[string]struct{}
+	cfg          *Config
+	id           NodeIdentity
+	peers        *PeerStore
+	dht          DHT
+	nodeKeys     *NodeKeypair
+	paths        *EnvPaths
+	secrets      *EnvSecrets
+	mu           sync.RWMutex
+	kv           map[string][]byte
+	chainMu      sync.Mutex
+	chainTip     string
+	seenMu       sync.Mutex
+	seen         map[string]struct{}
+	pendingCmdMu sync.Mutex
+	pendingCmd   *SyncCommand
 }
 
 type Config struct {
@@ -53,6 +55,7 @@ type EnvPaths struct {
 	ChunksDir string
 	KeyPath   string // legacy (still used by X25519 node keys if you kept that)
 	EnvEnc    string // NEW: env.enc (JSON with BeaconKey/FileKey)
+	EnvFile   string // Full path to env.enc file
 }
 
 type NodeIdentity struct {

@@ -1,41 +1,46 @@
-namespace Hoshizora;
+using System;
+using System.Threading;
+using System.Windows.Forms;
 
-static class Program
+namespace Hoshizora
 {
-    /// <summary>
-    /// The main entry point for the application.
-    /// </summary>
-    [STAThread]
-    static void Main()
+    static class Program
     {
-        // Enable visual styles
-        Application.EnableVisualStyles();
-        Application.SetCompatibleTextRenderingDefault(false);
-        Application.SetHighDpiMode(HighDpiMode.SystemAware);
-
-        // Handle unhandled exceptions
-        Application.ThreadException += (sender, e) =>
+        /// <summary>
+        /// The main entry point for the application.
+        /// </summary>
+        [STAThread]
+        static void Main()
         {
-            MessageBox.Show(
-                $"An error occurred:\n\n{e.Exception.Message}",
-                "Hoshizora Error",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Error);
-        };
+            // Enable visual styles
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
 
-        AppDomain.CurrentDomain.UnhandledException += (sender, e) =>
-        {
-            if (e.ExceptionObject is Exception ex)
+            // Handle unhandled exceptions
+            Application.ThreadException += (sender, e) =>
             {
                 MessageBox.Show(
-                    $"A fatal error occurred:\n\n{ex.Message}",
-                    "Hoshizora Fatal Error",
+                    string.Format("An error occurred:\n\n{0}", e.Exception.Message),
+                    "Hoshizora Error",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
-            }
-        };
+            };
 
-        // Run the application
-        Application.Run(new MainForm());
+            AppDomain.CurrentDomain.UnhandledException += (sender, e) =>
+            {
+                var ex = e.ExceptionObject as Exception;
+                if (ex != null)
+                {
+                    MessageBox.Show(
+                        string.Format("A fatal error occurred:\n\n{0}", ex.Message),
+                        "Hoshizora Fatal Error",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
+            };
+
+            // Run the application
+            Application.Run(new MainForm());
+        }
     }
 }

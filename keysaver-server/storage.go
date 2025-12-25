@@ -153,7 +153,7 @@ func (s *Storage) GetKey(fileHash string) (*FileKeyRecord, error) {
 		return nil, fmt.Errorf("decrypt key: %w", err)
 	}
 
-	rec.KeyB64 = base64.RawURLEncoding.EncodeToString(rawKey)
+	rec.KeyB64 = base64.StdEncoding.EncodeToString(rawKey)
 	rec.CreatedAt = time.Unix(createdUnix, 0)
 	return &rec, nil
 }
