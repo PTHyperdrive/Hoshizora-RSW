@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyDescriptionAttribute("Hoshizora-RSW - Resilient Secure Workspace")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1bf7c793d4d094b54430d72e11729c6f18074b77")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f8837d1996d0f618c40cc4ea372c6d71d50642ea")]
 [assembly: System.Reflection.AssemblyProductAttribute("Hoshizora")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Hoshizora")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
