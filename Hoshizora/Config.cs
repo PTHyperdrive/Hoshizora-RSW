@@ -44,7 +44,7 @@ namespace Hoshizora
         /// Key-Saver Server URL (Ubuntu 24.04 server).
         /// Set to your actual server hostname.
         /// </summary>
-        public const string KeySaverUrl = "http://192.168.41.132";
+        public const string KeySaverUrl = "http://192.168.183.132";
         
         /// <summary>
         /// API token for Key-Saver Server authentication.

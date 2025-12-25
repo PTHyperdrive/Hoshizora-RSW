@@ -239,27 +239,75 @@ namespace Hoshizora
         private async Task<byte[]> FetchKeyAsync(string fileHash)
         {
             var response = await _http.GetAsync(string.Format("{0}/keys/get?hash={1}", _keySaverUrl, fileHash));
+            var json = await response.Content.ReadAsStringAsync();
+
+            // Log the raw response for debugging
+            Log(string.Format("[DEBUG] Server response for hash {0}: {1}", fileHash.Substring(0, Math.Min(16, fileHash.Length)), json.Length > 200 ? json.Substring(0, 200) + "..." : json));
 
             if (!response.IsSuccessStatusCode)
             {
-                string error = await response.Content.ReadAsStringAsync();
-                throw new HttpRequestException(string.Format("Key fetch failed: {0}", error));
+                throw new HttpRequestException(string.Format("Key fetch failed (HTTP {0}): {1}", (int)response.StatusCode, json));
             }
 
-            var json = await response.Content.ReadAsStringAsync();
             using (var doc = JsonDocument.Parse(json))
             {
+                // Check status field first
+                if (doc.RootElement.TryGetProperty("status", out var statusEl))
+                {
+                    var status = statusEl.GetString();
+                    if (status == "not_found")
+                    {
+                        throw new KeyNotFoundException(string.Format("Key not found on server for hash: {0}", fileHash));
+                    }
+                    if (status == "error")
+                    {
+                        var errorMsg = doc.RootElement.TryGetProperty("error", out var errEl) ? errEl.GetString() : "Unknown error";
+                        throw new HttpRequestException(string.Format("Server error: {0}", errorMsg));
+                    }
+                }
+
+                // Get key_b64
                 JsonElement keyEl;
                 if (!doc.RootElement.TryGetProperty("key_b64", out keyEl))
-                    throw new KeyNotFoundException(string.Format("Key not found for hash: {0}", fileHash));
+                    throw new KeyNotFoundException(string.Format("key_b64 field missing in response for hash: {0}", fileHash));
 
                 string keyB64 = keyEl.GetString();
                 if (string.IsNullOrEmpty(keyB64))
-                    throw new InvalidDataException("Empty key");
+                    throw new InvalidDataException("Empty key_b64 value");
 
-                return Convert.FromBase64String(keyB64);
+                // Decode Base64 - handle both URL-safe and Standard encoding
+                try
+                {
+                    return DecodeBase64(keyB64);
+                }
+                catch (FormatException ex)
+                {
+                    Log(string.Format("[DEBUG] Invalid Base64 key_b64 value: '{0}'", keyB64.Length > 50 ? keyB64.Substring(0, 50) + "..." : keyB64));
+                    throw new InvalidDataException(string.Format("Invalid Base64 key format: {0}", ex.Message));
+                }
             }
         }
+
+        /// <summary>
+        /// Decode Base64 string, handling both URL-safe and Standard encoding.
+        /// URL-safe uses: - instead of +, _ instead of /, no padding
+        /// Standard uses: +, /, = padding
+        /// </summary>
+        private static byte[] DecodeBase64(string base64)
+        {
+            // Convert URL-safe Base64 to Standard Base64
+            string standardBase64 = base64.Replace('-', '+').Replace('_', '/');
+            
+            // Add padding if needed
+            switch (standardBase64.Length % 4)
+            {
+                case 2: standardBase64 += "=="; break;
+                case 3: standardBase64 += "="; break;
+            }
+            
+            return Convert.FromBase64String(standardBase64);
+        }
+
 
         private static string ComputeSha256(byte[] data)
         {

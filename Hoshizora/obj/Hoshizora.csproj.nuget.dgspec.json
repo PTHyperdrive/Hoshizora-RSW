@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\SourceCode\\C#\\Hoshizora-RSW\\Hoshizora\\Hoshizora.csproj": {}
+    "D:\\Git\\Hoshizora-RSW\\Hoshizora\\Hoshizora.csproj": {}
   },
   "projects": {
-    "D:\\SourceCode\\C#\\Hoshizora-RSW\\Hoshizora\\Hoshizora.csproj": {
+    "D:\\Git\\Hoshizora-RSW\\Hoshizora\\Hoshizora.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\SourceCode\\C#\\Hoshizora-RSW\\Hoshizora\\Hoshizora.csproj",
+        "projectUniqueName": "D:\\Git\\Hoshizora-RSW\\Hoshizora\\Hoshizora.csproj",
         "projectName": "Hoshizora",
-        "projectPath": "D:\\SourceCode\\C#\\Hoshizora-RSW\\Hoshizora\\Hoshizora.csproj",
-        "packagesPath": "C:\\Users\\PTHyperdrive\\.nuget\\packages\\",
-        "outputPath": "D:\\SourceCode\\C#\\Hoshizora-RSW\\Hoshizora\\obj\\",
+        "projectPath": "D:\\Git\\Hoshizora-RSW\\Hoshizora\\Hoshizora.csproj",
+        "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
+        "outputPath": "D:\\Git\\Hoshizora-RSW\\Hoshizora\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\PTHyperdrive\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,7 +26,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -45,7 +44,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "10.0.100"
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net48": {
@@ -60,7 +59,7 @@
               "version": "[6.0.9, )"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.308\\RuntimeIdentifierGraph.json"
         }
       },
       "runtimes": {
